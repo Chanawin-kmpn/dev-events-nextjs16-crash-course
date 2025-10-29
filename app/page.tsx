@@ -1,25 +1,25 @@
-import EventCard from "@/components/EventCard";
 import ExploreBtn from "@/components/ExploreBtn";
-import { IEvent } from "@/database/event.model";
+import EventCard from "@/components/EventCard";
 import { cacheLife } from "next/cache";
+import { IEvent } from "@/database/event.model";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
-const Home = async () => {
+const Page = async () => {
 	"use cache";
 	cacheLife("hours");
 	const response = await fetch(`${BASE_URL}/api/events`);
-
 	const { events } = await response.json();
 
 	return (
 		<section>
 			<h1 className="text-center">
-				The Hub for Every Dev <br /> Event You Can&apos;t Miss
+				The Hub for Every Dev <br /> Event You Can't Miss
 			</h1>
 			<p className="mt-5 text-center">
-				Hackathons, Meetups, and Conference, All in One Place
+				Hackathons, Meetups, and Conferences, All in One Place
 			</p>
+
 			<ExploreBtn />
 
 			<div className="space-y-7 mt-20">
@@ -39,4 +39,4 @@ const Home = async () => {
 	);
 };
 
-export default Home;
+export default Page;
